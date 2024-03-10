@@ -2,6 +2,7 @@ package edu.uoc.ds.adt;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,9 +13,8 @@ public class PR0QueueTest {
 
 
     private void fillQueue() {
-        for (char c = '0'; c < '9'; c++) {
-            pr0q.add(Character.valueOf(c));
-
+        for (String angle : TestUtils.getSinValues().split(" ")) {
+            pr0q.add(angle);
         }
     }
     @Before
@@ -31,11 +31,9 @@ public class PR0QueueTest {
     }
 
 
-    @org.junit.Test
+    @Test
     public void queueTest() {
-        assertEquals(this.pr0q.CAPACITY-1, this.pr0q.getQueue().size());
-
-        assertEquals(this.pr0q.clearFullQueue(), new String("0 1 2 3 4 5 6 7 8 "));
+        assertEquals(TestUtils.getSinValues(), pr0q.clearFullQueue());
 
         assertEquals(0, this.pr0q.getQueue().size());
     }

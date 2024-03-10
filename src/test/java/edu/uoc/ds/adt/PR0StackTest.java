@@ -2,6 +2,7 @@ package edu.uoc.ds.adt;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,8 +12,9 @@ public class PR0StackTest {
     PR0Stack pr0q;
 
     private void fillStack() {
-        for (char c = '0'; c < '9'; c++) {
-            pr0q.push(Character.valueOf(c));
+        String[] angles = TestUtils.getSinValues().split(" ");
+        for (int i = angles.length - 1; i >=0 ; i--) {
+            pr0q.push(angles[i]);
         }
     }
 
@@ -31,12 +33,9 @@ public class PR0StackTest {
     }
 
 
-    @org.junit.Test
+    @Test
     public void stackTest() {
-
-        assertEquals(this.pr0q.CAPACITY-1, this.pr0q.getStack().size());
-
-        assertEquals(this.pr0q.clearAllStack(), new String("8 7 6 5 4 3 2 1 0 "));
+        assertEquals(TestUtils.getSinValues(), pr0q.clearAllStack());
 
         assertEquals(0, this.pr0q.getStack().size());
     }
